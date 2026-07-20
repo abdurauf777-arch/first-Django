@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="pngegg.png">
+    <link rel="stylesheet" href="swiper-bundle.min.css">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+Old+Italic&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -25,8 +26,6 @@
             flex-direction: column;
         }
 
-
-
         section {
             display: flex;
             align-items: center;
@@ -42,6 +41,92 @@
             background-color: #d4af37;
             border-radius: 5px;
             animation: fadeInUp 2s forwards ease-in-out; 
+        }
+
+        .card-image{
+            position: relative;
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            background: #FFF;
+            padding: 3px;
+        }
+
+        .card-image .card-img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #4070F4;
+        }
+
+        .card {
+            width: 320px;
+            border-radius: 25px;
+            background-color: #FFF;
+        }
+
+        .name {
+            font-size: 10px;
+            font-weight: 500;
+            color: #FFF;
+        }
+
+        .description {
+            font-size: 10px;
+            color:#d4af37;
+            text-align: center;
+        }
+
+        .image-content{
+            row-gap: 5px;
+            position: relative;
+            border-radius: 25px 25px 0 25px;
+        }
+
+        .slide-content {
+            margin: 0 40px;
+        }
+
+        .image-content,
+        .card-content{
+            padding: 10px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .overlay{
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #d4af37;
+            border-radius: 25px 25px 0 25px;
+        }
+
+        .overlay::before,
+        .overlay::after{
+            position: absolute;
+            content: '';
+            right: 0;
+            bottom: -40px;
+            height: 40px;
+            width: 40px;
+            background-color: #FFF;
+        }
+
+        .slide-container{
+            max-width: 1120px;
+            width: 100%;
+            background-color: grey;
+            padding: 40px 0;
+        }
+
+        .overlay::after{
+            border-radius: 0 25px 0 0;
+            background-color: #FFF;
         }
 
         section .section-p {
@@ -85,7 +170,7 @@
             font-family: Arial, sans-serif;
             font-size: 11px;
             font-weight: 500;
-            letter-spacing: 2px;             
+            letter-spacing: 2px;            
             text-transform: uppercase;
             cursor: pointer;
             text-decoration: none;
@@ -142,7 +227,7 @@
             text-align: center;
         }
 
-                nav ul {
+        nav ul {
             list-style: none;
             display: flex;
             gap: 15px;
@@ -157,7 +242,7 @@
             animation: fadeInUP 2s forwards ease-in-out;
         }
 
-                nav {
+        nav {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -168,7 +253,17 @@
             padding-bottom: 25px;
         }
 
-        
+        /* Custom alignment for your team grid layout */
+        .card-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
         @keyframes fadeInUP {
             from {
@@ -207,7 +302,7 @@
 </head>
 <body>
 
-        <nav>
+    <nav>
         <h1>My website</h1>
         <ul>
             <li><a class="nav-a" href="{% url 'home' %}">Home</a></li>
@@ -216,7 +311,6 @@
         </ul>
     </nav>
     
-
     <section>
         <div class="box-1"></div>
         <p class="section-p">est. 2026</p>
@@ -227,20 +321,64 @@
         <h1>Welcome to our website!</h1>
     </header>
 
-
     <h1 class="inter">Our contacts</h1>
-    <div class="chekout">
-        <a href="{% url 'about' %}" class="chekout-a">Telegram</a>
-        <a href="{% url 'about' %}" class="chekout-a">Instagram</a>
-        <a href="{% url 'about' %}" class="chekout-a">Facebook</a>
-        
-        <div class="line"></div>
-    </div>
 
+    <!-- New Cards Created From Scratch Placed Perfectly Under "Our Contacts" -->
+    <div class="chekout">
+        <div class="card-wrapper">
+
+            <!-- Card 1: John Doe -->
+            <div class="card">
+                <div class="image-content">
+                    <span class="overlay"></span>
+                    <div class="card-image">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe" class="card-img">
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h2 class="name">John Doe</h2>
+                    <p class="description">Frontend Developer<br>john.doe@example.com</p>
+                </div>
+            </div>
+
+            <!-- Card 2: Michael Stone -->
+            <div class="card">
+                <div class="image-content">
+                    <span class="overlay"></span>
+                    <div class="card-image">
+                        <img src="https://randomuser.me/api/portraits/men/81.jpg" alt="Michael Stone" class="card-img">
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h2 class="name">Michael Stone</h2>
+                    <p class="description">Backend Developer<br>michael.stone@example.com</p>
+                </div>
+            </div>
+
+            <!-- Card 3: Sophia Lee -->
+            <div class="card">
+                <div class="image-content">
+                    <span class="overlay"></span>
+                    <div class="card-image">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sophia Lee" class="card-img">
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h2 class="name">Sophia Lee</h2>
+                    <p class="description">UI/UX Designer<br>sophia.lee@example.com</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2026 Our website</p>
         <p>&copy; It is original version copying will be punished </p>
     </footer>
+
 </body>
+<script src="swiper-bundle.min.js.js"></script>
+
+<script></script>
 </html>
