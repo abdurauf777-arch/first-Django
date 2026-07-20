@@ -2,12 +2,229 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+Old+Italic&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #0d0d0d;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 20px;
+            padding-left: 30px;
+            padding-right: 30px;
+            border-bottom: 1px solid #c5a059;
+            padding-bottom: 25px;
+        }
+
+        nav .nav-a {
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #777777;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            animation: fadeInUp 2s forwards ease-in-out; 
+        }
+
+        .nav-a.active, .nav-a:hover {
+            color: #c5a059;
+            border-bottom: 1px solid #c5a059;
+            padding-bottom: 4px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav h1 {
+            font-family: 'Georgia', serif;
+            color: #c5a059;
+            font-size: 17px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            animation: fadeInUP 2s forwards ease-in-out;
+        }
+
+        section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding-top: 120px;
+            animation: fadeInUP 2s forwards ease-in-out;
+        }
+
+        section .box-1 {
+            width: 30px;
+            height: 2px;
+            background-color: #d4af37;
+            border-radius: 5px;
+            animation: fadeInUp 2s forwards ease-in-out; 
+        }
+
+        section .section-p {
+            color: #d4af372a;
+            text-transform: uppercase;
+        }
+
+        header h1 {
+            color: #F5F5F5;
+            font-size: 46px;
+            font-weight: 400;
+            font-family: 'Cormorant Garamond', serif;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .inter {
+            font-size: 33px;
+            color: #F5F5F5;
+            font-weight: 500;
+            font-family: 'Cormorant Garamond', serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .chekout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 40px;
+            padding-top: 30px;
+        }
+
+        .chekout .chekout-a {
+            width: 190px;
+            height: 44px;
+            background-color: transparent;
+            border: 1px solid #c5a059;
+            color: #c5a059;
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;             
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            padding-top: 15px;
+            border-radius: 7px;
+        }
+
+        .line {
+            width: 70px;
+            height: 2px;
+            background-color: #d4af37;
+            border-radius: 5px;
+            animation: bounce 1.5s infinite ease-in-out;
+        }
+
+        footer {
+            width: 100%;
+            height: 100%;
+            min-height: 70px;
+            margin-top: auto;
+            padding: 25px 0;
+            border-top: 1px solid rgba(197, 160, 89, 0.15);
+            animation: fadeInUP 2s forwards ease-in-out;
+        }
+
+        footer p {
+            color: #666666;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        @keyframes fadeInUP {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(0);
+            }
+            40% {
+                transform: rotateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
 </head>
 <body>
-    
-     
+    <nav>
+        <h1>My website</h1>
+        <ul>
+            <li><a class="nav-a" href="{% url 'home' %}">Home</a></li>
+            <li><a class="nav-a" href="{% url 'about' %}">About</a></li>
+            <li><a class="nav-a" href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+    </nav>
 
+    <section>
+        <div class="box-1"></div>
+        <p class="section-p">est. 2026</p>
+        <div class="box-1"></div>
+    </section>
+
+    <header>
+        <h1>Welcome to our website!</h1>
+    </header>
+
+
+    <h1 class="inter">Introducing our team!</h1>
+    <div class="chekout">
+        <a href="{% url 'about' %}" class="chekout-a">Chekout</a>
+        <div class="line"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Our website</p>
+    </footer>
 </body>
 </html>

@@ -1,10 +1,19 @@
 from django.shortcuts import render
 
 def home(request):
-    return render(request, "my_shop/home.html")
+    context = {
+        "title": "Main"
+    }
+    return render(request, "my_shop/home.html", context)
 
 def about(request):
-    return render(request, "my_shop/about.html")
+    context = {
+        "title": "About"
+    }
+    return render(request, "my_shop/about.html", context)
 
 def contact(request):
-    return render(request, "my_shop/contact.html")
+    context = {
+        "phone": "+998 99 999 99 99"
+    }
+    return render(request, "my_shop/contact.html", context)
